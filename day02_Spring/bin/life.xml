@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+    <!-- init-method初始化时调用方法  destroy-method摧毁时调用方法-->
+	<bean id="person" class="com.atguigu.ioc.life.Person" init-method="init" destroy-method="destory">
+		<property name="id" value="1001"></property>
+		<property name="sex" value="男"></property>
+	</bean>
+	<!-- 不访问可以不加id -->
+	<bean class="com.atguigu.ioc.life.AfterHandler"></bean>
+</beans>

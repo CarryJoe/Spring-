@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+ http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<!-- 自动扫描"com.atguigu.ioc.userMod"包中所有的类，对加了注解的类的对象进行管理 -->
+	<!-- 作为spring的组件进行加载：会自动在spring的配置文件中生成对应的bean，这些bean的id会以类的首字母小写为值 -->
+	<context:component-scan base-package="com.atguigu.ioc.userMod"></context:component-scan>
+	<!-- 效果如下，实际开发中可以省略 -->
+	<!-- <bean id="userController" class="com.ayguigu.ioc.userMod.controller.UserController"></bean> 
+		<bean id="userServiceImpl" class="com.ayguigu.ioc.userMod.service.UserServiceImpl"></bean> 
+		<bean id="userDaoImpl" class="com.ayguigu.ioc.userMod.dao.UserDaoImpl"></bean> -->
+    <!-- <context:component-scan>标签中可以有多个include或多个exclude,但是切忌两个都包含 -->
+	<!-- 
+	<context:component-scan base-package="com.atguigu.ioc.userMod"
+		use-default-filters="false">
+		 -->
+		<!-- use-default-filters="false" 默认为true 会扫描所有那么会导致下面无效 应该设置成false -->
+		<!-- 只扫描com.atguigu.ioc.userMod包下的annotation(注解类型)为 "org.springframework.stereotype.Controller"的类 -->
+		<!-- 只扫描com.atguigu.ioc.userMod包下的assignable(指定类型)为 "com.atguigu.ioc.userMod.controller.UserController"的类 -->
+
+		<!-- <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/> -->
+	 <!-- 
+		<context:include-filter type="assignable" expression="com.atguigu.ioc.userMod.controller.UserController" />
+      -->
+        
+        <!-- 排除时要先满足能够扫描所有的条件 再排除   use-default-filters="true" -->
+        <!-- 
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    
+	</context:component-scan>
+	-->
+
+</beans>

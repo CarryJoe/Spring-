@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+ http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+	<!-- druid包中的对象 有上面的操作 就不用下面这种操作 -->
+	<!-- <bean id="datasource" class="com.alibaba.druid.pool.DruidDataSource"> 
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property> 
+		<property name="url" value="jdbc:mysql://localhost:3306/eshop"></property> 
+		<property name="username" value="root"></property> <property name="password" 
+		value="360421"></property> </bean> -->
+		
+	<!-- 加载资源文件db.properties 方法一 -->
+	<!-- propertyPlaceHolderConfigure设置资源文件路径 -->
+	<!-- 
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="db.properties"></property>
+	</bean>
+	 -->
+	<!-- 加载资源文件db.properties 方法二-->
+	<!-- propertyPlaceHolderConfigure设置资源文件路径 -->
+	<context:property-placeholder location="db.properties"/>
+	<bean id="datasource" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+
+	
+		
+
+</beans>

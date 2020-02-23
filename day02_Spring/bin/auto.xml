@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+ http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+   
+    <!-- 
+      autowire:根据某种策略自动为非字面量属性赋值
+      autowire:"byName|byType"
+      byName:通过属性名和Sping容器中的bean的id进行比较，若一致则可以直接赋值
+      byType:通过Spring容器中bean的类型，为兼容性的属性赋值
+     -->
+    <!-- autowire="byName" 直接复制 -->
+	<bean id="emp" class="com.atguigu.ioc.auto.Emp" autowire="byName">
+		<property name="eid" value="1001"></property>
+		<property name="ename" value="张三"></property>
+		<!--  
+		<property name="car" ref="car"></property>
+		<property name="dept" ref="dept"></property>
+		-->
+	</bean>
+	
+	<bean id="car" class="com.atguigu.ioc.auto.Car">
+		<property name="cid" value="666666">
+		</property>
+		<property name="cname" value="车子">
+		</property>
+	</bean>
+	<bean id="dept" class="com.atguigu.ioc.auto.Dept">
+		<property name="did" value="666666">
+		</property>
+		<property name="dname" value="部门">
+		</property>
+	</bean>
+	
+</beans>
