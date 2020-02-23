@@ -1,2 +1,2 @@
 # Spring-
-Spring框架学习之 动态代理
+Spring框架学习之 day02_Spring动态代理
